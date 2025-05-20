@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Verify Email</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <style>
+    body {
+      font-family: Georgia, serif;
+      padding: 40px;
+    }
+    label {
+      display: inline-block;
+      width: 160px;
+    }
+    input {
+      margin-bottom: 10px;
+    }
+    .message {
+      color: red;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Please verify your email address</h1>
+
+  <div>
+    <label>Email Address:</label>
+    <input type="email" id="email">
+    <span class="message" id="emailMsg"></span>
+  </div>
+
+  <div>
+    <label>Confirm Email Address:</label>
+    <input type="email" id="confirmEmail">
+    <span class="message" id="confirmMsg"></span>
+  </div>
+
+  <button id="confirmBtn">Confirm</button>
+
+  <script>
+    $(function () {
+      $('#confirmBtn').click(function () {
+        let email = $('#email').val();
+        let confirm = $('#confirmEmail').val();
+        let valid = true;
+
+        $('#emailMsg').text('');
+        $('#confirmMsg').text('');
+
+        if (!email) {
+          $('#emailMsg').text('This field is required.');
+          valid = false;
+        }
+
+        if (!confirm) {
+          $('#confirmMsg').text('This field is required.');
+          valid = false;
+        }
+
+        if (email && confirm && email !== confirm) {
+          $('#confirmMsg').text('The email addresses must match.');
+          valid = false;
+        }
+
+        if (valid) {
+          alert('Email confirmation successful');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
