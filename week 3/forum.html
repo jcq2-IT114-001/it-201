@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UCID Validation Form</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
+        input, button { padding: 8px; font-size: 16px; }
+        button { cursor: pointer; }
+        #result { margin-top: 20px; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <h2>UCID Validation Form</h2>
+    <form id="ucidForm">
+        <input type="text" id="ucid" name="ucid" placeholder="Enter UCID" 
+               title="UCID must start with letters and may have up to 3 digits at the end" required>
+        <button type="button" onclick="validateUCID()">Submit</button>
+    </form>
+
+    <p id="result"></p>
+
+    <script>
+        const validUCIDs = ["abc123", "xyz99", "test1", "hello55", "user"];
+
+        function validateUCID() {
+            const ucid = document.getElementById("ucid").value.trim();
+            const pattern = /^[A-Za-z]+[0-9]{0,3}$/;
+            const result = document.getElementById("result");
+
+            if (!pattern.test(ucid)) {
+                result.textContent = "UCID DOES NOT CONFORM TO VALID FORMAT";
+                result.style.color = "red";
+            } else if (!validUCIDs.includes(ucid)) {
+                result.textContent = "VALID UCID FORMAT BUT INVALID UCID";
+                result.style.color = "orange";
+            } else {
+                result.textContent = "VALID UCID FORMAT AND UCID FOUND";
+                result.style.color = "green";
+            }
+        }
+    </script>
+
+</body>
+</html>
