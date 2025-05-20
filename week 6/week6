@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mouseover Magic</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: #f4f4f4;
+            padding-top: 50px;
+        }
+        .container {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            margin: auto;
+        }
+        h2 {
+            display: none;
+            color: #333;
+        }
+        input {
+            padding: 10px;
+            width: 80%;
+            border: 1px solid #aaa;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Below me!</p>
+        <h2 id="magicText">Surprise! You found me.</h2>
+        <input type="text" id="hoverBox" placeholder="Here!">
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let heading = document.getElementById("magicText");
+            let inputBox = document.getElementById("hoverBox");
+
+            inputBox.onmouseover = () => heading.style.display = "block";
+            inputBox.onmouseout = () => heading.style.display = "none";
+        });
+    </script>
+</body>
+</html>
