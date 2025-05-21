@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dog Breed Thing</title>
+    <script>
+        function lookupBreed(str) {
+            if (str.length === 0) {
+                document.getElementById("result").innerHTML = "";
+                return;
+            }
+
+            let xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState === 4 && this.status === 200) {
+                    document.getElementById("result").innerHTML = "FOUND: " + this.responseText;
+                }
+            };
+            xhttp.open("GET", "get_breed.php?q=" + str, true);
+            xhttp.send();
+        }
+    </script>
+</head>
+<body>
+   <h2>Please enter the name of the dog breed you want to lookup</h2>
+    <form>
+        <label>Dog Breed's name:</label>
+        <input type="text" onkeyup="lookupBreed(this.value)">
+    </form>
+    <p id="result">FOUND:</p>
+</body>
+</html>
